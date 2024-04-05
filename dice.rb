@@ -39,16 +39,23 @@ get("/dice/1/20") do
   outcome = "you rolled a #{die}"
 
   "<h1>1d20</h1>
-  <p>#{die}</p>"
+  <p>#{outcome}</p>"
 end
 
 get("dice/5/4") do
+
   sum = 0
-  i = 1
-  a = []
-  for i <= 5
-   a[i] = rand(1..4)
-   sum = sum + a[i]
-   i = i + 1
-  end
- 
+  #i = 1
+  #dice = []
+
+  #for i in 1..5 do
+   #dice[i] = rand(1..4)
+   #sum = sum + dice[i]
+   #i = i + 1
+  #end
+
+  outcome = "Your roll on all the 5 dice for a total of #{sum}"
+  
+  "<h1>5d4</h1>
+  <p>#{outcome}</p>"
+end
