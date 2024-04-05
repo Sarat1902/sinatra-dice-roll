@@ -1,5 +1,12 @@
 require "sinatra"
 require "sinatra/reloader"
+require "better_errors"
+require "binding_of_caller"
+
+# Need this configuration for better_errors
+use(BetterErrors::Middleware)
+BetterErrors.application_root = __dir__
+BetterErrors::Middleware.allow_ip!('0.0.0.0/0.0.0.0')
 
 get("/") do
     "
@@ -54,7 +61,6 @@ get("/dice/5/4") do
     end
   
     outcome = "Your roll on all the 5 dice #{dice} for a total of #{sum}"
-    
     "<h1>5d4</h1>
     <p>#{outcome}</p>"
   end
