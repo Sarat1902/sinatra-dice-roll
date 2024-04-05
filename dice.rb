@@ -35,9 +35,7 @@ end
 get("/dice/1/20") do
   die = rand(1..20)
   @outcome = "you rolled a #{die}"
-
-  "<h1>1d20</h1>
-  <p>#{outcome}</p>"
+  erb(:one_twenty)
 end
 
 get("/dice/5/4") do
@@ -52,7 +50,6 @@ get("/dice/5/4") do
     end
   
     @outcome = "Your roll on all the 5 dice #{dice} for a total of #{sum}"
-    "<h1>5d4</h1>
-    <p>#{outcome}</p>"
+    erb(:five_four)
   end
   
