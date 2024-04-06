@@ -13,54 +13,60 @@ get("/") do
 end
 
 get("/dice/2/6") do
-  first_die = rand(1..6)
-  second_die = rand(1..6)
-  sum = first_die + second_die
-	
-  @outcome = "You rolled a #{first_die} and a #{second_die} for a total of #{sum}."
+ 
+  @rolls = []
+  
+    2.times do
+      die = rand(1..6)
+  
+      @rolls.push(die)
+    end
 	
   erb(:two_six)
 
 end
 
 get("/dice/2/10") do
-  first_die = rand(1..10)
-  second_die = rand(1..10)
-  sum = first_die + second_die
-  @outcome = "you rolled a #{first_die} and a #{second_die} for a total of #{sum} "
+  @rolls = []
+  
+    2.times do
+      die = rand(1..10)
+      @rolls.push(die)
+    end
 
   erb(:two_ten)
 end
 
 get("/dice/1/20") do
-  @die = rand(1..20)
-  @outcome = "you rolled a #{@die}"
+  @rolls = []
+
+    1.times do
+      die = rand(1..20)
+      @rolls.push(die)
+    end
+  
+
    erb(:one_twenty)
 end
 
 get("/dice/5/4") do
-    sum = 0
-    i = 0
-    dice = []
+  @rolls = []
   
-    for i in 0..4 do
-      dice[i] = rand(1..4)
-      sum = sum + dice[i]
-      i = i + 1
+    5.times do
+      die = rand(1..4)
+      @rolls.push(die)
     end
-  
-    @outcome = "Your roll on all the 5 dice #{dice} for a total of #{sum}"
+
     erb(:five_four)
   end
   
   get("/dice/100/6") do
     @rolls = []
   
-    100.times do
-      die = rand(1..6)
-  
-      @rolls.push(die)
-    end
+      100.times do
+        die = rand(1..6)
+        @rolls.push(die)
+       end
   
     erb(:one_hundred_six)
   end
